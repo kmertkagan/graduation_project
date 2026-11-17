@@ -75,7 +75,7 @@ class LossFunction(ABC):
     def hessian(self, parameters: ArrayLike) -> FloatArray:
         r"""Return the Hessian matrix :math:`\nabla^2 f(\mathbf{x})`."""
 
-    def _validate_parameters(self, parameters: ArrayLike) -> FloatArray:
+    def validate_parameters(self, parameters: ArrayLike) -> FloatArray:
         """Convert ``parameters`` to a finite ``float64`` vector.
 
         Raises

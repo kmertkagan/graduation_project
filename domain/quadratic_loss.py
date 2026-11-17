@@ -130,14 +130,14 @@ class QuadraticLoss(LossFunction):
         return self._matrix
 
     def evaluate(self, parameters: ArrayLike) -> float:
-        vector = self._validate_parameters(parameters)
+        vector = self.validate_parameters(parameters)
         delta = vector - self._center
         return float(0.5 * delta @ self._matrix @ delta + self._constant)
 
     def gradient(self, parameters: ArrayLike) -> FloatArray:
-        vector = self._validate_parameters(parameters)
+        vector = self.validate_parameters(parameters)
         return self._matrix @ (vector - self._center)
 
     def hessian(self, parameters: ArrayLike) -> FloatArray:
-        self._validate_parameters(parameters)
+        self.validate_parameters(parameters)
         return self._matrix.copy()

@@ -60,11 +60,11 @@ class RosenbrockLoss(LossFunction):
         return 0.0
 
     def evaluate(self, parameters: ArrayLike) -> float:
-        x, y = self._validate_parameters(parameters)
+        x, y = self.validate_parameters(parameters)
         return float((1.0 - x) ** 2 + 100.0 * (y - x**2) ** 2)
 
     def gradient(self, parameters: ArrayLike) -> FloatArray:
-        x, y = self._validate_parameters(parameters)
+        x, y = self.validate_parameters(parameters)
         return np.array(
             [
                 -2.0 * (1.0 - x) - 400.0 * x * (y - x**2),
@@ -74,7 +74,7 @@ class RosenbrockLoss(LossFunction):
         )
 
     def hessian(self, parameters: ArrayLike) -> FloatArray:
-        x, y = self._validate_parameters(parameters)
+        x, y = self.validate_parameters(parameters)
         return np.array(
             [
                 [2.0 - 400.0 * y + 1200.0 * x**2, -400.0 * x],
